@@ -33,10 +33,19 @@ print(y.shape)
 model = LinearRegression()
 model.fit(X, y)
 
-y_intercept = model.intercept_
+## The scikit learn LinearRegression model doesn't work with finding a summary table.
+## I am going to fit the model to statsmodel in order to pull
 
-print(model.coef_[0])
+X_sm = sm.add_constant(X)  # adds the intercept column w/the 1 values which is needed to calculate the y-intercpet correctly which impacts the slope
+model_sm = sm.OLS(y, X_sm).fit()
+
+y_intercept = model.intercept_
+slope = model.coef_[0]
+
+print(slope)
 print(y_intercept)
+
+print(model_sm.summary().tables[1])
 
 
 ## predicting
