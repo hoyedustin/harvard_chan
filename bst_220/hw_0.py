@@ -36,7 +36,7 @@ model.fit(X, y)
 ## The scikit learn LinearRegression model doesn't work with finding a summary table.
 ## I am going to fit the model to statsmodel in order to pull
 
-X_sm = sm.add_constant(X)  # adds the intercept column w/the 1 values which is needed to calculate the y-intercpet correctly which impacts the slope
+X_sm = sm.add_constant(X)  # adds the intercept column w/the 1 values which is needed to calculate the y-intercpet correctly which impacts the slope. W/out this. the line would be forced to run through the origin.
 model_sm = sm.OLS(y, X_sm).fit()
 
 y_intercept = model.intercept_
