@@ -261,7 +261,6 @@ m4_red = sm.OLS(y_red, X4_red).fit()
 
 print("n full:", int(m4.nobs), " n reduced:", int(m4_red.nobs))
 
-import pandas as pd
 comparison = pd.DataFrame({
     "coef_full": m4.params,
     "coef_reduced": m4_red.params,
